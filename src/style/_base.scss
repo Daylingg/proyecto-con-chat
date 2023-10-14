@@ -1,0 +1,55 @@
+*{
+    font-family: 'Outfit', sans-serif;
+}
+
+p{
+    font-size: 15px;
+    color: $Grayish-blue;
+}
+
+body{
+    background-color: $Light-gray;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+h2{
+    color: $Dark-blue;
+}
+
+.container-codQR{
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+
+.container-img{
+    background-color: $White;
+    border-radius: 20px;
+    width: 250px;
+    height: auto;
+    padding: 10px;
+   
+}
+
+
+.img-cont{
+    width: 95%;
+    height: 50%;
+    margin: auto;
+    border-radius: 20px;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}

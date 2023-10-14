@@ -1,0 +1,287 @@
+@mixin mobile {
+    @media screen and (max-width: 480px) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+.header-bar{
+    display: flex;
+    min-width: 320px;
+    width: 100vw;
+    height: 60px;    
+    background-color: #707981b5;
+    @include mobile() {
+        height: 40px;
+    }
+
+    button{
+        color: $Dark-blue;
+        font-size: 18px;
+        padding-right: 20px;
+    }
+    
+    span{
+        padding-left: 20px;
+        color: $Dark-blue;
+        font-size: 20px;
+        font-weight: 800;
+        @include mobile() {
+            font-size: 18px;
+        }
+    }
+}
+
+
+.menu-area{
+    text-align: left;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    @include mobile() {
+        width: 30%;
+    }
+}
+
+.logout-modo-name{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    align-items: center;
+    @include mobile() {
+        width: 70%;
+    }
+}
+
+.btn-group{
+    margin-left: 20px;
+}
+
+.dropdown, .dropend, .dropstart, .dropup {
+    position: relative;
+    padding-left: 20px;
+}    
+
+
+
+
+/*section journal*/
+
+.journal__main-content{
+    display: flex;
+    min-width: 320px;
+}
+
+.journal__sidebar{
+    background-color: $dark-chat;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 92vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 30%;
+    
+}
+
+.journal__new-entry{
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+
+    transition: color .3s ease;
+
+    &:hover{
+        color: darken($color: white, $amount: 20);
+    }
+
+    p{
+        font-size: 18px;
+    }
+}
+
+.journal__entries{
+    flex: 1 1 auto; //para q use todo el espacio restante
+    margin-top: 30px;
+    overflow-y: auto;
+}
+
+.journal__entry{
+    background-color: white;
+    border-radius: 4px;
+    color: $dark-chat;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    overflow: hidden;
+    @include tablet() {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.journal__entry-picture{
+    height: 75px;
+    width: 75px;
+}
+
+.journal__entry-body{
+    padding: 5px;
+    width: 70%;
+    height: 75px;
+    overflow: auto;
+    @include tablet() {
+        height: 50px;
+        width: 80%;
+    }
+
+    p{
+        margin: 0;
+    }
+}
+
+.journal__entry-title{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.journal__entry-content{
+    font-size: 10px;
+    @include mobile() {
+        display: none;
+    }
+}
+
+.journal__entry-date-box{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    width: 18%;
+    @include tablet() {
+        flex-direction: row;
+        padding: 0px;
+    }
+
+}
+
+.journal__entry-date-box{
+    span{
+        font-size: 12px;
+        font-weight: bold;
+        @include tablet() {
+            padding-right: 3px;
+        }
+    }
+    
+    h4{
+        font-size: 12px;
+        font-weight: bold;
+        @include tablet() {
+            margin-bottom: 0;
+        }
+    }
+    
+}
+
+main{
+    width: 70%;
+    height: 91vh;
+    
+}
+
+.nothing__main-content{
+    align-items: center;
+    background-color: $primary;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    
+    p{
+        text-align: center;
+        color: $White;
+    }
+}
+
+//section notes
+
+.notes__main-content{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: $White;
+    width: 100%;
+}
+
+.notes__appbar{
+    align-items: center;
+    background-color: $primary;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px 10px 20px;
+    @include tablet() {
+        padding: 5px 10px;
+    }
+
+    samp{
+        @include tablet() {
+            font-size: 0.9em;
+        }
+    }
+}
+
+.notes__content{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+}
+
+.notes__title-input, .notes__textarea{
+    border: none;
+
+    &:focus{
+        outline: none;
+    }
+}
+
+.notes__title-input{
+    color: $Dark-blue;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.notes__textarea{
+    border: none;
+    color: $Dark-blue;
+    font-size: 20px;
+    flex: 1 1 auto;
+    resize: none;//para q no se pueda agrandar manualmente
+}
+
+.notes__image img{
+    box-shadow: 5px 5px $Dark-blue;
+    height: 150px;
+    width: 150px;
+    @include tablet() {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.pointer{
+    cursor: pointer;
+}

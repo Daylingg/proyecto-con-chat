@@ -1,0 +1,138 @@
+.container_auth {
+    font-size: 16px;
+    background-color: $White;
+    width: 90vw;
+    max-width: 34em;
+    min-width: 320px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    padding: 3em;
+    border-radius: 0.6em;
+    box-shadow: 0 1.2em 2.4em rgba(111, 85, 0, 0.25);
+}
+
+.auth__title{
+    color: darken($color: $primary, $amount: 20); //darken es una funcion q puede oscurecer los colores, se le pasa el color y la cant de oscuridad
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.auth__input{
+    color: $Dark-blue;
+    border: 0px;
+    border-bottom: 1px solid $Light-gray;
+    font-size: 16px;
+    margin-bottom: 10px;
+    height: 25px;
+    width: 100%;
+    transition: border-bottom .3s ease;
+
+    &:focus{//esto le dice a sass q es la misma clase pero cuando este con el foco
+        border-bottom: 1px solid $primary;
+        outline: none;
+    }
+}
+
+.file{
+    font-size: 12px;
+
+}
+
+form{
+    .label-reg{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        padding-bottom: 10px;
+        
+            img{
+            width: 25px;
+            height: 25px;
+            
+        }
+       }
+}
+
+.auth__social-networks{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+form{
+    align-items: center;
+}
+
+.login-container{
+    margin-top:0%;
+}
+.login-form-1{
+    border-radius: 5px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    padding: 5%;
+    background-color: white;
+}
+.login-form-1 h3{
+    text-align: center;
+    color: $Dark-blue;
+}
+.login-form-2{
+    border-radius: 5px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    padding: 5%;
+    background: #0062cc;
+}
+.login-form-2 h3{
+    text-align: center;
+    color: #fff;
+}
+.login-container form{
+    padding: 10%;
+}
+.btnSubmit
+{
+    width: 100%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+.login-form-1 .btnSubmit{
+    color: #fff;
+    background-color: #0062cc;
+
+    &:hover {
+        box-shadow: 0 0 6px $google-blue;
+    }
+}
+.login-form-2 .btnSubmit{
+    background-color: #fff;
+    color: #0062cc;
+
+    &:hover {
+        box-shadow: 0 0 6px $Light-gray;
+    }
+}
+.login-form-2 .ForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.login-form-1 .ForgetPwd{
+    color: #0062cc;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+@media(max-width:767px){
+    .container_auth {
+        font-size: 10px;
+    }
+}

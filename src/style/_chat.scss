@@ -1,0 +1,307 @@
+@mixin mobile {
+    @media screen and (max-width: 480px) {
+        @content;
+    }
+}
+@mixin tabMov {
+    @media screen and (max-width: 600px) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+@mixin laptop {
+    @media screen and (max-width: 1200px) {
+        @content;
+    }
+}
+
+
+.home{
+    background-color: #a7bcff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+    .containerChat{
+        border: 1px solid $White;
+        border-radius: 10px;
+        width: 65%;
+        height: 80%;
+        display: flex;
+        overflow: hidden;
+        @include tablet {
+            width: 90%;
+        }
+        @include mobile() {
+            width: 90%;
+        }
+
+        .sidebar{
+            flex: 1;
+            background-color: $Dark-blue;
+            position: relative;
+            @include mobile() {
+                width: 40%;
+            }
+
+            .navbarChat{
+                display: flex;
+                align-items: center;
+                background-color: $dark-chat;
+                height: 50px;
+                padding: 10px;
+                justify-content: space-between;
+                color: $Light-gray;
+
+                .logo{
+                    font-weight: bold;
+                    @include tablet {
+                        display: none;
+                    }
+                }
+
+                .user{
+                    display: flex;
+                    gap: 10px;
+
+                    img{
+                        background-color: $chat-light;
+                        height: 24px;
+                        width: 24px;
+                        border-radius: 50px;
+                        object-fit: cover;
+                    }
+
+                    button{
+                        background-color: $chat-blue;
+                        color: $Light-gray;
+                        font-size: 12px;
+                        border: none;
+                        border-radius:8px;
+                        cursor: pointer;
+                        @include tablet {
+                            position: absolute;
+                            bottom: 10px;
+                        }
+                    }
+                }
+            }
+
+            .search{
+                border-bottom: 1px solid gray;
+
+                .searchForm{
+                    padding: 10px;
+
+                    .inputSearch{
+                        background-color: transparent;
+                        border: none;
+                        color: $White;
+                        outline: none;
+
+                        &::placeholder{
+                            color: $Light-gray;
+                        }
+                    }
+                }
+
+                
+            }
+
+            .userChat{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px;
+                color: $White;
+                cursor: pointer;
+                @include mobile() {
+                    flex-direction: column;
+                }
+
+                &:hover{
+                    background-color: $dark-chat;
+                }
+
+                img{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50px;
+                    object-fit: cover;
+                }
+
+                .userChatInfo{
+                    span{
+                        font-size: 18px;
+                        font-weight: 500;
+                    }
+                    p{
+                        font-size: 14px;
+                        color: $Light-gray;
+                    }
+                }
+            }
+        }
+
+        .chatArea{
+            flex: 2;
+
+            .chatArea-info{
+                height: 50px ;
+                background-color: $dark-med-blue;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px;
+                color: $Light-gray;
+                
+            }
+
+            .chatIcons{
+                display: flex;
+                gap: 10px;
+
+                img{
+                    height: 24px;
+                    cursor: pointer;
+                    background-color: $White;
+                }
+            }
+
+            .messagesArea{
+                background-color: $chat-light;
+                padding: 10px;
+                height: calc(100% - 100px);
+                overflow-y: scroll;
+                @include tabMov() {
+                    height: calc(100% - 120px);
+                }
+
+                .messages{
+                    display: flex;
+                    gap: 20px;
+                    margin-bottom: 20px;
+                    @include mobile() {
+                        gap: 10px;
+                    }
+
+                    .msgInfo{
+                        display: flex;
+                        flex-direction: column;
+                        color: gray;
+                        font-weight: 300;
+                        @include mobile() {
+                            font-size: 9px;
+                        }
+
+                        img{
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .msgContent{
+                        max-width: 80%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+
+                        p{
+                            background-color: $White;
+                            padding: 10px 20px;
+                            border-radius: 0 10px 10px 10px;
+                            max-width: max-content;
+                            @include mobile() {
+                                padding: 5px;
+                            }
+                        }
+
+                        img{
+                            width: 50%;
+                        }
+
+                    }
+
+                    &.owner{
+                        flex-direction: row-reverse;
+
+                        .msgContent{
+                            align-items: flex-end;
+
+                            p{
+                                background-color: #8da4f1;
+                                color: $White;
+                                border-radius: 10px 0 10px 10px;
+                            }
+                        }
+
+                        
+                    }
+                }
+            }
+
+            .inputChat{
+                background-color: $White;
+                padding: 10px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                @include tabMov() {
+                    flex-direction: column;
+                    height: 78px;
+                    padding: 5px;
+                }
+
+                input{
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    color: $dark-chat;
+                    font-size: 18px;
+
+                    &::placeholder{
+                        color: $Light-gray;
+                    }
+                }
+
+                .send{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    @include tabMov() {
+                        gap: 4px;
+                    }
+
+                    img{
+                        height: 24px;
+                        width: 25px;
+                        cursor: pointer;
+                    }
+
+                    .btn-send{
+                        border: none;
+                        padding: 10px 15px;
+                        border-radius: 5px;
+                        color: $White;
+                        background-color: $dark-med-blue;
+                        cursor: pointer;
+                        @include tabMov() {
+                            font-size: 12px;
+                            padding: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
