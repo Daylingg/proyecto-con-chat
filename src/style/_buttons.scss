@@ -30,6 +30,15 @@
     }
 }
 
+.btn-profile{
+    background-color: $primary;
+    border-radius: 2px;
+    color: whitesmoke;
+
+    &:hover{
+        background-color: darken($color: $primary, $amount: 15);
+    }
+}
 
 .google-btn {
     cursor: pointer;

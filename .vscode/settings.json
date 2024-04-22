@@ -1,0 +1,11 @@
+{
+    "editor.fontSize": 14,
+    "editor.inlayHints.fontSize": 14,
+    "editor.suggestFontSize": 14,
+    "screencastMode.fontSize": 56,
+    "terminal.integrated.fontSize": 14,
+    "scm.inputFontSize": 13,
+    "markdown.preview.fontSize": 14,
+    "editor.minimap.scale": 1,
+    "debug.console.fontSize": 14
+}

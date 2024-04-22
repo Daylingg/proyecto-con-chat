@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { collection,  getDocs, query, where } from "firebase/firestore";
 import { db } from '../firebase/firebase-config';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import { selectChat } from '../helper/functions';
 
@@ -11,8 +11,6 @@ export const SearchChat = () => {
   const [userName, setUserName] = useState('')
   const [user, setUser] = useState(null)
   const [err, setErr] = useState(false)
-
-  const dispatch = useDispatch();
 
   const {uid,name,photo} = useSelector( state => state.auth );
 

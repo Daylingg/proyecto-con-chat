@@ -12,18 +12,18 @@ export const LoginScreen = () => {
 const dispatch = useDispatch();
 const {loading, msjError} = useSelector( state => state.ui );
 
-const [formValues, handleInputChange] = useForm({
-    email:'day@gmail.com',
-    password:'123456'
+const [formValues, handleInputChange,reset] = useForm({
+    email:'',
+    password:''
 })
 
 const {email,password}= formValues
 
 const [formValuesRegister,handleRegisterInputChange] = useForm({
-    name: 'Daylin',
-    emailR:'day@gmail.com',
-    passwordR:'123456',
-    password2:'123456'
+    name: '',
+    emailR:'',
+    passwordR:'',
+    password2:''
 })
 
 const {name,emailR,passwordR,password2} = formValuesRegister
@@ -39,10 +39,13 @@ const handleLogin=(e)=>{
 
 const isFormValid = () => {
 
-    if (!validator.isEmail(email)){//si no es un email q haga lo siguiente
+    if (!validator.isEmail(email) || email.length===0){//si no es un email q haga lo siguiente
         dispatch(setError('El email es incorrecto'))
-        Swal.fire('Error','El email es incorrecto','error')
-        
+        Swal.fire('Error','El email es incorrecto o no ha escrito ninguno','error')
+        .then(res => {
+            if(res.isConfirmed){
+                reset()
+            } })
         return false
     }else if(password.length < 5){
         dispatch(setError('La contraseña no puede tener menos de 6 caracteres'))
@@ -58,7 +61,6 @@ const isFormValid = () => {
 const isFormValidR =()=>{
     if(name.trim().length === 0){
         dispatch(setError('Name is required'))
-        console.log(emailR)
         Swal.fire('Error','Name is required', 'error')
         return false
 
@@ -100,7 +102,7 @@ const handleRegister=(e)=>{
                             <input 
                                 type="text"
                                 className="form-control"
-                                placeholder="Correo"
+                                placeholder="Email"
                                 name='email'
                                 value={email}
                                 onChange={handleInputChange}
@@ -110,7 +112,7 @@ const handleRegister=(e)=>{
                             <input
                                 type="password"
                                 className="form-control"
-                                placeholder="Contraseña"
+                                placeholder="Password"
                                 name='password'
                                 value={password}
                                 onChange={handleInputChange}
@@ -134,7 +136,7 @@ const handleRegister=(e)=>{
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder="Nombre"
+                                placeholder="Name"
                                 name='name'
                                 value={name}
                                 onChange={handleRegisterInputChange}
@@ -144,7 +146,7 @@ const handleRegister=(e)=>{
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder="Correo"
+                                placeholder="Email"
                                 name='emailR'
                                 value={emailR}
                                 onChange={handleRegisterInputChange}
@@ -154,7 +156,7 @@ const handleRegister=(e)=>{
                             <input
                                 type="password"
                                 className="form-control"
-                                placeholder="Contraseña" 
+                                placeholder="Password" 
                                 name='passwordR'
                                 value={passwordR}
                                 onChange={handleRegisterInputChange}
@@ -165,7 +167,7 @@ const handleRegister=(e)=>{
                             <input
                                 type="password"
                                 className="form-control"
-                                placeholder="Repita la contraseña" 
+                                placeholder="Repit password" 
                                 name='password2'
                                 value={password2}
                                 onChange={handleRegisterInputChange}

@@ -20,7 +20,7 @@ export const JuegoPalabra = () => {
     const [error, setError] = useState('')
     let wordApi=wordShow
 
-console.log(wordShow)
+
     useEffect(() => {
     
         obtPalabra()

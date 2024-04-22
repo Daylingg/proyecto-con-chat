@@ -5,11 +5,12 @@ import { db, storage } from "../firebase/firebase-config";
 
 
 export const  uploadFile = async(file) => {
-
+ 
     const dateId = new Date().getTime();//para establecer un id unico
+    const fileName = `${dateId}.jpg`; // Nombre del archivo con extensión JPG
     try {
-        const storageRef = ref(storage, `${dateId}`);
-        await uploadBytes(storageRef, file)
+        const storageRef = ref(storage, fileName);
+        await uploadBytes(storageRef, file, { contentType: 'image/jpeg' })
         const url= await getDownloadURL(storageRef)//crea una referencia url del archivo
 
         return url
@@ -17,8 +18,37 @@ export const  uploadFile = async(file) => {
         Swal.fire('Error',error,'error')
     }
     
-
 }
+
+// Función para convertir una imagen base64 en un archivo
+export const dataURLtoFile = (dataURL, filename) => {
+    const arr = dataURL.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+  
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+  
+    return new File([u8arr], filename, { type: mime });
+  };
+/**
+ * export const uploadFile = async (file) => {
+  const dateId = new Date().getTime(); // Establecer un ID único para el nombre del archivo
+  const fileName = `${dateId}.jpg`; // Nombre del archivo con extensión JPG
+
+  try {
+    const storageRef = ref(storage, fileName);
+    await uploadBytes(storageRef, file, { contentType: 'image/jpeg' }); // Especificar el tipo de archivo como imagen/jpeg
+    const url = await getDownloadURL(storageRef);
+    return url;
+  } catch (error) {
+    console.error('Error al subir el archivo:', error);
+    return null;
+  }
+ */
 
 
 export const loadChats = async (uid, funct) => {

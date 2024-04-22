@@ -1,7 +1,5 @@
 import React from 'react'
-import Cam from '../assets/video.png'
 import Add from '../assets/user.png'
-import More from '../assets/more.PNG'
 import { useSelector } from 'react-redux'
 import { MessagesArea } from './MessagesArea'
 import { Input } from './Input'
@@ -10,21 +8,29 @@ export const ChatArea = () => {
 
   const {user} = useSelector( state => state.chat );
 
-
+  const handleClick=(e)=>{
+    e.preventDefault()
+    const file=e.target.files[0]
+    console.log(file)
+  }
   
   return (
     <div className='chatArea'>
       <div className='chatArea-info'>
         <span>{user.name}</span>
         <div className='chatIcons'>
-          <img src={Cam} alt='' />
-          <img src={Add} alt='' />
-          <img src={More} alt='' />
+          {/* <img src={Cam} alt='' /> */}
+          <input className='auth__input file' type='file' id='fileSelector' style={{display:'none'}} />
+            <label className='label-reg' htmlFor='fileSelector'onSelect={handleClick}>
+                <img src={Add} alt=''/>
+            </label>
+          {/*<img src={Add} alt='' />
+           <img src={More} alt='' /> */}
         </div>
       </div>
 
       <MessagesArea/>
-      <Input/>
+      {user.name && <Input/>}
     </div>
   )
 }

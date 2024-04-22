@@ -1,6 +1,7 @@
 export const types={
     login: '[Auth] Login',
     logout: '[Auth] Logout',
+    updatePhoto: '[Auth] UpdatePhoto',
 
     uiStartLoading: '[UI] Start loading',
     uiFinishLoading: '[UI] Finish loading',

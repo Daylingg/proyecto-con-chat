@@ -3,9 +3,10 @@ import Swal from "sweetalert2"
 import { auth, db} from "../firebase/firebase-config"
 import { types } from "../types/types"
 import { finishLoading, startLoading } from "./ui"
-import { doc, setDoc } from "firebase/firestore"
-import { uploadFile } from "../helper/functions"
+import { doc, setDoc, updateDoc } from "firebase/firestore"
+import { dataURLtoFile, uploadFile } from "../helper/functions"
 import { noteLogout } from "./notes"
+import { async } from "@firebase/util"
 
 
 
@@ -89,3 +90,38 @@ export const startLogout = () => {
 export const logout =()=>({
     type: types.logout
 })
+
+export const UpdatePhotoProfile=async(img)=>{
+    
+    const usuario= auth.currentUser    
+    const dateId = new Date().getTime();
+    const fileName = `${dateId}.jpg`;
+    const file = dataURLtoFile(img, fileName);
+
+    const resultUrl = await uploadFile(file)
+
+    // Actualizar la foto de perfil en el usuario
+    await updateProfile(usuario, {
+        //displayName': name,
+        'photoURL': resultUrl
+    })
+
+    // Actualizar la foto de perfil en Firestore
+    const userRef = doc(db,'users',usuario.uid)
+    await updateDoc(userRef,{
+        photoURL: resultUrl
+    });
+
+    return usuario.photoURL
+    
+    
+}
+
+export const updatePhoto = (photoURL) => ({
+    
+    type: types.updatePhoto,
+    payload:{
+        photoURL
+    }
+}   
+)

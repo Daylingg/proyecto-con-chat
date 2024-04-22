@@ -22,10 +22,13 @@
 
 .home{
     background-color: #a7bcff;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    @include mobile() {
+        height: 98vh;
+    }
     
 
     .containerChat{
@@ -70,12 +73,27 @@
                     display: flex;
                     gap: 10px;
 
+                    .dialog-content {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100%;
+                    }
+                    
+                    .dialog-buttons {
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 1rem;
+                    }
+
                     img{
                         background-color: $chat-light;
                         height: 24px;
                         width: 24px;
                         border-radius: 50px;
                         object-fit: cover;
+                        cursor: pointer;
                     }
 
                     button{
@@ -151,6 +169,7 @@
 
         .chatArea{
             flex: 2;
+            background-color: #ddddf7;
 
             .chatArea-info{
                 height: 50px ;
@@ -262,6 +281,45 @@
                     padding: 5px;
                 }
 
+                .conInp{
+                    display: flex;
+
+                    .btn-emoji, .closeEmoji{
+                        background-color: $dark-med-blue;
+                        border-radius: 8px;
+                        color: #fff;
+                        flex-grow: 2;
+                        transition: .3s;
+
+                        &:hover{
+                            background-color: $Dark-blue;
+                        }
+                    }
+
+                    i{
+                        padding-left: 6px;
+                    }
+                }
+
+                .close{
+                    display: none;
+                }
+
+                .open{
+                    display: block;
+                    position: absolute;
+                    top: 55px;
+                    text-align: end;
+                    width: 300px;
+                    
+                    @include tablet(){
+                        width: 200px;
+                    }
+                    @include mobile(){
+                        width: 150px;
+                    }
+                }
+
                 input{
                     width: 100%;
                     border: none;
@@ -304,4 +362,9 @@
             }
         }
     }
+}
+
+.encabezado{
+    color: $dark-med-blue;
+    font-size: 20px;
 }
